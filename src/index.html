@@ -17,7 +17,7 @@
       rel="stylesheet"
     />
   </head>
-  <body class="bg-white3 flex justify-center px-5 2xl:px-0">
+  <body class="bg-white2 flex justify-center px-5 2xl:px-0">
     <!-- wrapper -->
     <div
       class="max-w-[80rem] w-full border border-black py-4 flex flex-col gap-5"
@@ -85,8 +85,32 @@
         </div>
       </header>
 
+      <h1 class="font-medium text-3xl pt-2">Dashboard</h1>
+
       <!-- Analysis Data -->
-      <div class="bg-white rounded-2xl p-3"></div>
+      <div class="flex items-center gap-5">
+        <!-- Total -->
+        <div
+          class="min-w-[200px] h-full p-4 bg-white rounded-xl font-semibold flex flex-col gap-2 text-xl shd"
+        >
+          <img src="./assets/icons/truck.svg" class="w-12 h-12" alt="" />
+          <h1>Total <span class="text-[#82D565]">Products</span></h1>
+          <h1 class="text-4xl font-semibold">30</h1>
+        </div>
+
+        <!-- Cat -->
+        <div
+          class="min-w-[200px] h-full p-4 bg-white rounded-xl font-semibold flex flex-col gap-2 text-xl shd"
+        >
+          <img src="./assets/icons/category.svg" class="w-12 h-12" alt="" />
+          <h1>List <span class="text-[#007AFF]">Categories</span></h1>
+          <h1 class="text-2xl font-semibold" id="catDisplay">Electronics</h1>
+        </div>
+      </div>
+
+      <div>
+        
+      </div>
     </div>
   </body>
 </html>
