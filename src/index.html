@@ -16,9 +16,77 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap"
       rel="stylesheet"
     />
-    
   </head>
-  <body>
-    <h1>Hello World</h1>
+  <body class="bg-white3 flex justify-center px-5 2xl:px-0">
+    <!-- wrapper -->
+    <div
+      class="max-w-[80rem] w-full border border-black py-4 flex flex-col gap-5"
+    >
+      <!-- Header -->
+      <header
+        class="bg-white rounded-2xl p-3 flex justify-between items-center"
+      >
+        <div class="flex gap-3 items-center h-full">
+          <!-- Image -->
+          <div>
+            <img
+              src="./assets/user.jpg"
+              alt=""
+              class="w-14 h-14 object-cover rounded-full"
+            />
+          </div>
+
+          <!-- Name -->
+          <div class="flex flex-col gap-">
+            <p class="font-semibold text-[18px]">Udhav Wadhawan</p>
+            <p class="text-[15px] text-zinc-600">Product Manager</p>
+          </div>
+
+          <div class="w-[2px] bg-zinc-200 h-10 rounded-full"></div>
+
+          <!-- Date -->
+          <div class="bg-white2 p-2 rounded-full flex items-center gap-1">
+            <img src="./assets/icons/cal.svg" alt="" />
+            <p class="font-medium text-sm">
+              <script>
+                var today = new Date();
+                var date =
+                  today.getFullYear() +
+                  "-" +
+                  (today.getMonth() + 1) +
+                  "-" +
+                  today.getDate();
+                document.write(date);
+              </script>
+            </p>
+          </div>
+        </div>
+
+        <!-- Right -->
+        <div class="flex gap-2 items-center">
+          <button
+            class="bg-sky-500 font-medium text-sm text-white p-2 rounded-xl flex items-center gap-1 hover:shadow-lg"
+          >
+            <img src="./assets/icons/new.svg" class="w-5 h-5 mb-[2px]" alt="" />
+
+            <p>New</p>
+          </button>
+          <button
+            class="bg-white2 p-2 rounded-full flex items-center gap-1 hover:shadow-lg"
+          >
+            <img src="./assets/icons/bell.svg" class="w-6 h-6" alt="" />
+          </button>
+          <button
+            class="bg-white2 p-2 rounded-full flex items-center gap-1 hover:shadow-lg"
+          >
+            <img src="./assets/icons/setting.svg" class="w-7 h-7" alt="" />
+            <p class="font-medium text-sm">Settings</p>
+          </button>
+        </div>
+      </header>
+
+      <!-- Analysis Data -->
+      <div class="bg-white rounded-2xl p-3"></div>
+    </div>
   </body>
 </html>
