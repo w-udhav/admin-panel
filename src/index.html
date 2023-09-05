@@ -17,11 +17,46 @@
       rel="stylesheet"
     />
   </head>
-  <body class="bg-white2 flex justify-center px-5 2xl:px-0">
-    <!-- wrapper -->
+  <body class="bg-white2 flex gap-5 p-5 overflow-hidden">
+    <!-- Sidebar -->
     <div
-      class="max-w-[80rem] w-full border border-black py-4 flex flex-col gap-5"
+      class="bg-white p-3 rounded-xl w-[256px] sticky flex flex-col gap-4 shd"
     >
+      <div class="flex items-center gap-1">
+        <img src="./assets/images/logo.png" alt="logo" class="w-9 h-9" />
+        <h1 class="font-semibold text-amber-600 text-2xl" id="sidebarTitle">
+          Admin Panel
+        </h1>
+      </div>
+      <!-- links -->
+      <div class="border-y w-full" id="links">
+        <button class="w-full active" data-target="productListing">
+          <div
+            class="flex items-center gap-3 p-2 rounded-md hover:bg-zinc-100 cursor-pointer"
+          >
+            <img src="./assets/icons/dashboard.svg" class="w-5 h-5" alt="" />
+            <p class="font-medium text-sm">Product Listing</p>
+          </div>
+        </button>
+        <button class="w-full" data-target="createNew">
+          <div
+            class="flex items-center gap-3 p-2 rounded-md hover:bg-zinc-100 cursor-pointer"
+          >
+            <img src="./assets/icons/new2.svg" class="w-5 h-5" alt="" />
+            <p class="font-medium text-sm">Create a new</p>
+          </div>
+        </button>
+      </div>
+
+      <!-- help and support -->
+      <div class="h-full w-full flex items-end">
+        <h2 class="text-sm text-center w-full text-zinc-500 cursor-pointer">
+          ? Help and Support
+        </h2>
+      </div>
+    </div>
+    <!-- wrapper -->
+    <div class="flex-1 h-[96vh] flex flex-col gap-5 overflow-y-auto">
       <!-- Header -->
       <header
         class="bg-white rounded-2xl p-3 flex justify-between items-center"
@@ -85,31 +120,151 @@
         </div>
       </header>
 
-      <h1 class="font-medium text-3xl pt-2">Dashboard</h1>
+      <div class="flex flex-col gap-5 content-component" id="productListing">
+        <h1 class="font-medium text-3xl pt-2">Dashboard</h1>
 
-      <!-- Analysis Data -->
-      <div class="flex items-center gap-5">
-        <!-- Total -->
-        <div
-          class="min-w-[200px] h-full p-4 bg-white rounded-xl font-semibold flex flex-col gap-2 text-xl shd"
-        >
-          <img src="./assets/icons/truck.svg" class="w-12 h-12" alt="" />
-          <h1>Total <span class="text-[#82D565]">Products</span></h1>
-          <h1 class="text-4xl font-semibold">30</h1>
+        <!-- Analysis Data -->
+        <div class="flex items-center gap-5">
+          <!-- Total -->
+          <div
+            class="min-w-[200px] h-full p-4 bg-white rounded-xl font-semibold flex flex-col gap-2 text-xl hover:scale-[102%] cursor-default shd"
+          >
+            <img src="./assets/icons/truck.svg" class="w-12 h-12" alt="" />
+            <h1>Total <span class="text-[#82D565]">Products</span></h1>
+            <h1 class="text-4xl font-semibold">30</h1>
+          </div>
+
+          <!-- Cat -->
+          <div
+            class="min-w-[200px] h-full p-4 bg-white rounded-xl font-semibold flex flex-col gap-2 text-xl hover:scale-[102%] cursor-default shd"
+          >
+            <img src="./assets/icons/category.svg" class="w-12 h-12" alt="" />
+            <h1>List <span class="text-[#007AFF]">Categories</span></h1>
+            <h1 class="text-2xl font-semibold" id="catDisplay">Electronics</h1>
+          </div>
         </div>
 
-        <!-- Cat -->
-        <div
-          class="min-w-[200px] h-full p-4 bg-white rounded-xl font-semibold flex flex-col gap-2 text-xl shd"
-        >
-          <img src="./assets/icons/category.svg" class="w-12 h-12" alt="" />
-          <h1>List <span class="text-[#007AFF]">Categories</span></h1>
-          <h1 class="text-2xl font-semibold" id="catDisplay">Electronics</h1>
+        <div class="bg-white rounded-xl shd p-3 flex flex-col gap-1">
+          <div class="flex justify-between gap-3">
+            <div
+              class="w-full flex items-center gap-1 bg-white3 rounded-md overflow-hidden px-3"
+            >
+              <img src="./assets/icons/search.svg" class="w-5 h-5" alt="" />
+              <input
+                type="text"
+                name="search"
+                id="search"
+                placeholder="Search for products..."
+                class="border w-full bg-transparent p-2 outline-none placeholder:text-black2 text-black"
+              />
+            </div>
+            <div class="flex items-center">
+              <button class="px-3 py-1 rounded-md hover:bg-zinc-100">
+                Filter
+              </button>
+              <button class="px-3 py-1 rounded-md hover:bg-zinc-100">
+                Sort
+              </button>
+            </div>
+          </div>
+
+          <!-- Filtering and sorting -->
         </div>
       </div>
 
-      <div>
-        
+      <div class="flex-col gap-5 hidden content-component" id="createNew">
+        <h1 class="font-medium text-3xl pt-2">Add Product</h1>
+
+        <form
+          action=""
+          class="max-w-[70rem] boxShadow bg-white rounded-xl p-3 border border-zinc-100 flex flex-col md:flex-row gap-5"
+        >
+          <div class="flex-1 flex flex-col gap-5">
+            <!-- Name Field -->
+            <div class="flex flex-col gap-1">
+              <label for="name" class="text-[15px] font-medium">Name</label>
+              <input
+                type="text"
+                name="name"
+                autocomplete="off"
+                spellcheck="false"
+                id="name"
+                placeholder="Enter product name..."
+                class="rounded-md px-2 py-1 text-[16px] border border-zinc-300 focus-within:outline-blue-500"
+              />
+            </div>
+
+            <!-- Existing names -->
+            <div
+              id="existingNameList"
+              class="border border-zinc-200 rounded-md text-amber-500"
+            >
+              <p class="p-2 border-t first:border-t-0 text-sm">Mobile</p>
+              <p class="p-2 border-t text-sm">Mobile</p>
+            </div>
+          </div>
+
+          <div class="flex-1 flex flex-col gap-3">
+            <!-- Quantity Field -->
+            <div class="flex flex-col gap-1">
+              <label for="quantity" class="text-[15px] font-medium"
+                >Quantity</label
+              >
+              <input
+                type="number"
+                name="quantity"
+                autocomplete="off"
+                spellcheck="false"
+                id="quantity"
+                placeholder="No of products..."
+                class="rounded-md px-2 py-1 text-[16px] border border-zinc-300 focus-within:outline-blue-500"
+              />
+            </div>
+
+            <!-- Price Field -->
+            <div class="flex flex-col gap-1">
+              <label for="price" class="text-[15px] font-medium">Price</label>
+              <input
+                type="number"
+                name="price"
+                autocomplete="off"
+                spellcheck="false"
+                id="price"
+                placeholder="Price of product..."
+                class="rounded-md px-2 py-1 text-[16px] border border-zinc-300 focus-within:outline-blue-500"
+              />
+            </div>
+
+            <!-- Category Field -->
+            <div class="flex flex-col gap-1">
+              <label for="category" class="text-[15px] font-medium"
+                >Category</label
+              >
+              <select
+                name="category"
+                id="category"
+                aria-placeholder="Select category"
+                class="rounded-md px-2 py-1 text-[16px] border border-zinc-300 focus-within:outline-blue-500"
+              >
+                <option value="">select</option>
+                <option value="1">Electronics</option>
+                <option value="2">Clothing</option>
+                <option value="3">Home</option>
+                <option value="4">Furniture</option>
+                <option value="5">Books</option>
+                <option value="6">Health</option>
+              </select>
+            </div>
+            <div class="h-full">
+              <button
+                type="submit"
+                class="w-full p-2 font-medium text-white hover:bg-green-600 transition-all rounded-md bg-green-500"
+              >
+                Submit
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </body>
