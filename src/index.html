@@ -29,7 +29,7 @@
         </h1>
       </div>
       <!-- links -->
-      <div class="border-y w-full" id="links">
+      <div class="border-y py-1 w-full" id="links">
         <button class="w-full active" data-target="productListing">
           <div
             class="flex items-center gap-3 p-2 rounded-md hover:bg-zinc-100 cursor-pointer"
@@ -59,7 +59,7 @@
     <div class="flex-1 h-[96vh] flex flex-col gap-5 overflow-y-auto">
       <!-- Header -->
       <header
-        class="bg-white rounded-2xl p-3 flex justify-between items-center"
+        class="bg-white rounded-2xl p-3 flex justify-between items-center boxShadow"
       >
         <div class="flex gap-3 items-center h-full">
           <!-- Image -->
@@ -144,10 +144,11 @@
           </div>
         </div>
 
-        <div class="bg-white rounded-xl shd p-3 flex flex-col gap-1">
+        <!-- Searchbar -->
+        <div class="bg-white rounded-xl shd p-2 flex flex-col gap-1">
           <div class="flex justify-between gap-3">
             <div
-              class="w-full flex items-center gap-1 bg-white3 rounded-md overflow-hidden px-3"
+              class="md:max-w-[30rem] w-full flex items-center gap-1 bg-white2 rounded-md overflow-hidden px-3"
             >
               <img src="./assets/icons/search.svg" class="w-5 h-5" alt="" />
               <input
@@ -155,7 +156,7 @@
                 name="search"
                 id="search"
                 placeholder="Search for products..."
-                class="border w-full bg-transparent p-2 outline-none placeholder:text-black2 text-black"
+                class="w-full bg-transparent p-2 outline-none placeholder:text-black2 text-black"
               />
             </div>
             <div class="flex items-center">
@@ -170,13 +171,46 @@
 
           <!-- Filtering and sorting -->
         </div>
+
+        <!-- Display Products -->
+        <div class="view w-full flex justify-center">
+          <table
+            class="max-w-[60rem] bg-white rounded-md shd w-full p-2 overflow-x-auto table-auto"
+          >
+            <thead class="border-b text-[15px] font-medium bg-zinc-100">
+              <tr>
+                <td class="first:pl-4 p-2 text-left">Product Name</td>
+                <td class="p-2 text-left">Quantity</td>
+                <td class="p-2 text-left">Price</td>
+                <td class="p-2 text-left">Category</td>
+                <td class="last:pr-4 p-2 text-left">Actions</td>
+              </tr>
+            </thead>
+            <tbody class="text-zinc-700 text-[14px]" id="view">
+              <!-- <tr class="last:border-none border-b">
+                <td class="first:pl-4 p-2">Mobile</td>
+                <td class="p-2">Mobile</td>
+                <td class="p-2">Mobile</td>
+                <td class="p-2">Mobile</td>
+                <td class="last:pr-4 p-2 flex gap-3">
+                  <button class="text-red-500 hover:text-red-600">
+                    <img src="./assets/icons/bin.svg" class="w-5 h-5" alt="" />
+                  </button>
+                </td>
+              </tr> -->
+              <tr>
+                <td colspan="5" class="text-center">No Products</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <div class="flex-col gap-5 hidden content-component" id="createNew">
         <h1 class="font-medium text-3xl pt-2">Add Product</h1>
 
         <form
-          action=""
+          id="addProductForm"
           class="max-w-[70rem] boxShadow bg-white rounded-xl p-3 border border-zinc-100 flex flex-col md:flex-row gap-5"
         >
           <div class="flex-1 flex flex-col gap-5">
@@ -247,12 +281,12 @@
                 class="rounded-md px-2 py-1 text-[16px] border border-zinc-300 focus-within:outline-blue-500"
               >
                 <option value="">select</option>
-                <option value="1">Electronics</option>
-                <option value="2">Clothing</option>
-                <option value="3">Home</option>
-                <option value="4">Furniture</option>
-                <option value="5">Books</option>
-                <option value="6">Health</option>
+                <option value="electronics">Electronics</option>
+                <option value="clothing">Clothing</option>
+                <option value="home">Home</option>
+                <option value="furniture">Furniture</option>
+                <option value="books">Books</option>
+                <option value="health">Health</option>
               </select>
             </div>
             <div class="h-full">
