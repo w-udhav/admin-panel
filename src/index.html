@@ -131,7 +131,7 @@
           >
             <img src="./assets/icons/truck.svg" class="w-12 h-12" alt="" />
             <h1>Total <span class="text-[#82D565]">Products</span></h1>
-            <h1 class="text-4xl font-semibold">30</h1>
+            <h1 class="text-4xl font-semibold" id="totalProducts">0</h1>
           </div>
 
           <!-- Cat -->
@@ -145,7 +145,9 @@
         </div>
 
         <!-- Searchbar -->
-        <div class="bg-white rounded-xl shd p-2 flex flex-col gap-1">
+        <div
+          class="bg-white sticky top-0 left-0 rounded-xl shd p-2 flex flex-col gap-2"
+        >
           <div class="flex justify-between gap-3">
             <div
               class="md:max-w-[30rem] w-full flex items-center gap-1 bg-white2 rounded-md overflow-hidden px-3"
@@ -159,17 +161,69 @@
                 class="w-full bg-transparent p-2 outline-none placeholder:text-black2 text-black"
               />
             </div>
-            <div class="flex items-center">
-              <button class="px-3 py-1 rounded-md hover:bg-zinc-100">
+            <div class="flex items-center gap-1">
+              <button
+                id="filterBtn"
+                class="px-3 py-1 rounded-md hover:bg-zinc-100"
+              >
                 Filter
               </button>
-              <button class="px-3 py-1 rounded-md hover:bg-zinc-100">
+              <button
+                id="sortBtn"
+                class="px-3 py-1 rounded-md hover:bg-zinc-100"
+              >
                 Sort
               </button>
             </div>
           </div>
 
           <!-- Filtering and sorting -->
+          <div id="custom" class="flex gap-2">
+            <!-- Filter -->
+            <div
+              id="filterValue"
+              class="text-[15px] flex gap-3 px-2 py-[3px] rounded-full border border-blue-500 bg-blue-50 text-blue-600 overflow-hidden"
+            >
+              <select class="outline-none bg-transparent">
+                <option value="all">Filter option</option>
+                <option value="electronics">Electronics</option>
+                <option value="clothing">Clothing</option>
+                <option value="home">Home</option>
+                <option value="furniture">Furniture</option>
+                <option value="books">Books</option>
+                <option value="health">Health</option>
+              </select>
+
+              <button>
+                <img
+                  src="./assets/icons/cross.svg"
+                  alt="cross"
+                  class="w-5 h-5"
+                />
+              </button>
+            </div>
+
+            <!-- Sorting -->
+            <div
+              id="sortValue"
+              class="text-[15px] flex gap-3 px-2 py-[3px] rounded-full border border-blue-500 bg-blue-50 text-blue-600 overflow-hidden"
+            >
+              <select name="filterValue" class="outline-none bg-transparent">
+                <option value="all">Sort option</option>
+                <option value="name">Name</option>
+                <option value="price">Price</option>
+                <option value="quantity">Quantity</option>
+              </select>
+
+              <button>
+                <img
+                  src="./assets/icons/cross.svg"
+                  alt="cross"
+                  class="w-5 h-5"
+                />
+              </button>
+            </div>
+          </div>
         </div>
 
         <!-- Display Products -->
@@ -232,8 +286,7 @@
             <div
               id="existingNameList"
               class="border border-zinc-200 rounded-md text-amber-500"
-            >
-            </div>
+            ></div>
           </div>
 
           <div class="flex-1 flex flex-col gap-3">

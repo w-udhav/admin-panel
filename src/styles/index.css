@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+::-webkit-scrollbar {
+  width: 8px; /* Set the width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Track color */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888; /* Thumb color */
+  border-radius: 5px; /* Rounded corners for the thumb */
+}
+
+body {
+  scroll-behavior: smooth;
+  scrollbar: thin;
+}
 * {
   font-family: "Poppins", sans-serif;
   margin: 0;
