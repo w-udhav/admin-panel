@@ -6,15 +6,7 @@ class Product {
     this.category = category;
   }
 
-  // static getNextId() {
-  //   let lastId = parseInt(localStorage.getItem("lastId")) || 0;
-  //   lastId++;
-  //   localStorage.setItem("lastId", lastId);
-  //   return lastId;
-  // }
-
   save() {
-    this.id = Product.getNextId();
     const productList = JSON.parse(localStorage.getItem("productList")) || [];
     productList.push(this);
     localStorage.setItem("productList", JSON.stringify(productList));
@@ -27,18 +19,9 @@ class Product {
   }
 
   display() {
-    const list = JSON.parse(localStorage.getItem("productList"));
     const view = document.querySelector("#view");
     const product = document.createElement("tr");
     // product.classList.add("last:border-none border-b");
-
-    console.log(list.length);
-    if (list.length === 0) {
-      product.innerHTML = `
-        <td class="first:pl-4 p-2 capitalize" colspan="5">No Products</td>
-      `;
-      return;
-    }
 
     const currentProduct = this;
 
@@ -170,6 +153,42 @@ var price = document.querySelector("#price");
 var quantity = document.querySelector("#quantity");
 var category = document.querySelector("#category");
 
+pname.addEventListener("input", () => {
+  const list = JSON.parse(localStorage.getItem("productList")) || [];
+
+  // finding all unique names
+  const uniqueNames = list.reduce((acc, product) => {
+    if (!acc.includes(product.name)) {
+      acc.push(product.name);
+    }
+    return acc;
+  }, []);
+
+  const existingNameList = document.querySelector("#existingNameList");
+  existingNameList.innerHTML = "";
+  uniqueNames.forEach((name) => {
+    const p = document.createElement("p");
+    p.classList.add("p-2", "border-t", "first:border-t-0", "text-sm");
+    p.innerText = name;
+    existingNameList.appendChild(p);
+  });
+
+  // checking existing product
+  const existingProductIndex = list.findIndex(
+    (product) => product.name === pname.value
+  );
+  if (existingProductIndex !== -1) {
+    const existingProduct = list[existingProductIndex];
+    price.value = existingProduct.price;
+    quantity.value = existingProduct.quantity;
+    category.value = existingProduct.category;
+  } else {
+    price.value = "";
+    quantity.value = "";
+    category.value = "";
+  }
+});
+
 function checkInputs() {
   console.log(pname.value, price.value, quantity.value, category.value);
   // trim to remove the whitespaces
@@ -200,8 +219,24 @@ myForm.addEventListener("submit", (e) => {
   var quantity = document.querySelector("#quantity").value;
   var category = document.querySelector("#category").value;
 
-  const product = new Product(pname, price, quantity, category);
-  product.save();
+  const list = JSON.parse(localStorage.getItem("productList")) || [];
+  // checking existing product
+  const existingProductIndex = list.findIndex(
+    (product) => product.name === pname
+  );
+  if (existingProductIndex !== -1) {
+    const existingProduct = list[existingProductIndex];
+    existingProduct.quantity =
+      parseInt(existingProduct.quantity) + parseInt(quantity);
+    existingProduct.price = price;
+    existingProduct.category = category;
+    localStorage.setItem("productList", JSON.stringify(list));
+  } else {
+    const product = new Product(pname, price, quantity, category);
+    product.save();
+  }
+
+  displayProducts();
 });
 
 function displayProducts() {
