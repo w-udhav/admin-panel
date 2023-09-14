@@ -272,6 +272,9 @@ var pname = document.querySelector("#name");
 var price = document.querySelector("#price");
 var quantity = document.querySelector("#quantity");
 var category = document.querySelector("#category");
+const existingNameList = document.querySelector("#existingNameList");
+existingNameList.innerHTML =
+  "<p class='px-2 py-1 text-sm'>Type something to list products.</p>";
 
 pname.addEventListener("input", () => {
   const list = JSON.parse(localStorage.getItem("productList")) || [];
@@ -355,6 +358,10 @@ myForm.addEventListener("submit", (e) => {
     const product = new Product(pname, price, quantity, category);
     product.save();
   }
+  document.querySelector("#name").value = "";
+  document.querySelector("#price").value = "";
+  document.querySelector("#quantity").value = "";
+  document.querySelector("#category").value = "";
 
   displayProducts();
 });
